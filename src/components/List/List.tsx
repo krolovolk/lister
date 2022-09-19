@@ -1,15 +1,10 @@
 import React, { FC } from "react";
+import { IItem } from "../../types";
 
-export const List: FC<{}> = ({}) => {
-  const n = 5;
-
-  return (
+export const List: FC<{items: IItem[]}> = ({items}) => (
   <div>
-      <div>Item </div>
-      <div>Item </div>
-      <div>Item </div>
-      <div>Item </div>
-      <div>Item </div>
+    {items.map((el, i) => (
+        <div key={i}>{el.name}</div>
+    ))}
   </div>
- );
-}
+);
