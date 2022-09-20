@@ -1,18 +1,15 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import { AppHeader, AppToolbar } from "./styled";
 
-const Header: FC<{}> = ({}) => {
-    const CO = "Lister";
-
-    return (
-      <AppHeader>
-        <AppToolbar>
-          <a href="/" className="HeaderToolbar__link">Главная</a>
-          <a href="/list/" className="HeaderToolbar__link">Список</a>
-          <a href="/about/" className="HeaderToolbar__link">О проекте {CO}</a>
-        </AppToolbar>
-      </AppHeader>
-    );
-}
+const Header: FC<{}> = ({}) => (
+  <AppHeader>
+    <AppToolbar>
+      <Link to="/">Главная</Link>
+      <Link to="/catalog">Список</Link>
+      <Link to="/about">О проекте</Link>
+    </AppToolbar>
+  </AppHeader>
+);
 
 export default Header;

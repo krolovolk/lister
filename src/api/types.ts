@@ -21,3 +21,10 @@ export interface IUser {
       bs: string
     }
 }
+
+export enum IPaths {
+  Home = '/',
+  Catalog = 'catalog',
+  About = 'about',
+  Any = '*',
+}
