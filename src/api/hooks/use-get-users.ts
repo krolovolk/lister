@@ -1,11 +1,12 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { listUsers } from '../api';
+import { IUser } from '../types';
 
 export const useGetUsers = () => {
-  const [users, setUsers] = useState<Array<object>>([])
+  const [users, setUsers] = useState<IUser[]>([])
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users')
+    listUsers.getUsers()
       .then((response) => {
         setUsers(response.data);
       })

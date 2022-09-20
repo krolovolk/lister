@@ -4,9 +4,8 @@ import axios, { AxiosResponse } from 'axios';
 import Header from './components/Header/Header';
 import { List } from './components/List/List';
 import { Button } from 'primereact/button';
-import { IItem, IUser } from './types';
-import { useGetUsers } from './hooks/use-get-users';
-import { listUsers } from './api/api';
+import { IItem } from './types';
+import { useGetUsers } from './api/hooks/use-get-users';
 
 
 function App() {
@@ -16,18 +15,7 @@ function App() {
     {id: 3, name: 'Cabby', age: 64, mood: 'Lounge'},
     {id: 4, name: 'Dabby', age: 27, mood: 'Great'},
   ];
-
-  const [users, setUsers] = useState<IUser[]>([]);
-
-  // const { users } = useGetUsers();
-  
-  useEffect(() => {
-    listUsers.getUsers()
-      .then((response) => {
-        setUsers(response.data);
-      })
-      .catch(error => {throw Error(error)})
-  }, []);
+  const { users } = useGetUsers();
 
   return (
     <>
