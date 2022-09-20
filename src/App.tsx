@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import axios, { AxiosResponse } from 'axios';
-import Header from './components/Header/Header';
+import React from 'react';
+import Header from './components/Base-Layout/Header/Header';
 import { List } from './components/List/List';
 import { Button } from 'primereact/button';
+import { DataTable } from 'primereact/datatable';
 import { IItem } from './types';
 import { useGetUsers } from './api/hooks/use-get-users';
+import { Column } from 'primereact/column';
+import { Main, MainContainer } from './components/Base-Layout/styled';
 
 
 function App() {
@@ -18,14 +19,24 @@ function App() {
   const { users } = useGetUsers();
 
   return (
-    <>
+    <MainContainer>
       <Header />
-      <h2>Dynamic List</h2>
-      <List items={users}/>
-      <h2>Static List</h2>
-      <List items={items}/>
-      <Button label="Click" icon="pi pi-check" iconPos="right" />
-    </>
+      <Main>
+        <h2>Dynamic List</h2>
+        <List items={users}/>
+        <h2>Table List</h2>
+        <DataTable value={users} responsiveLayout='scroll' >
+          <Column field="id" header="ID" sortable />
+          <Column field="username" header="USER" sortable />
+          <Column field="name" header="NAME" sortable />
+          <Column field="email" header="EMAIL" sortable />
+          <Column field="company.name" header="COMPANY" sortable />
+        </DataTable>
+        <h2>Static List</h2>
+        <List items={items}/>
+        <Button label="Click" icon="pi pi-check" iconPos="right" />
+      </Main>
+    </MainContainer>
   );
 }
 
